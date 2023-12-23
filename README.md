@@ -44,3 +44,12 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin https://github.com/quadri090/chowshop-next.git
 git push -u origin main
+
+
+
+npm run dev -- -H 192.168.94.246 -p 3000
+
+
+onClick={() => {
+            isVisible();
+          }}
