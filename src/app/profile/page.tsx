@@ -1,9 +1,10 @@
 "use client";
+
 import axios from "axios";
 import React from "react";
 import { useRouter } from "next/navigation";
 
-export default function profile() {
+export default function Profile() {
   const router = useRouter();
   const [loading, setLoading] = React.useState(false);
   const [data, setData] = React.useState({
@@ -20,7 +21,6 @@ export default function profile() {
         console.log(res.data);
         setData(res.data.data);
         console.log(`Profile Page Data ${data}`);
-        // router.push(`/profile/${res.data.data._id}`);
         router.push("/")
       } catch (error) {
         console.log(error)

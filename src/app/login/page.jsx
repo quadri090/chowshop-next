@@ -158,7 +158,7 @@ export default function LogIn() {
 
           <div className="mt-[20px]">
             <p className="text-[14px]">
-              Don't have an account?{" "}
+              Don&apos;t have an account?{" "}
               <Link href="/signup" className="text-primary-red font-semibold">
                 Sign Up
               </Link>
