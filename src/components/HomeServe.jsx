@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 
-import ServeSteps from "./ServeSteps";
+import ServeSteps from "./Servesteps";
 import map1 from "../../public/assets/Map1.png";
 import Fast from "../../public/assets/Fast food.png";
 import scooter from "../../public/assets/Scooter.png";
