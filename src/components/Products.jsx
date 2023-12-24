@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useContext } from "react";
 import { HomeContext } from "../context/HomeContext.jsx";
@@ -11,13 +11,22 @@ export default function Products(props) {
   const cartItemCount = cartItems[id];
 
   return (
-    <div className={`font-Poppins text-base font-semibold sm:w-[320px] ${props.proClasses}`}>
+    <div
+      className={`font-Poppins text-base font-semibold sm:w-[320px] ${props.proClasses}`}
+    >
       <div className="w-[320px] sm:w-[266px] h-[150px] mt-[35px]">
-        <Image src={itemImage} alt="" />
+        <Image 
+        src={itemImage}
+        width={320}
+        height={266}
+        alt="item image" 
+        className="" />
       </div>
       <div className="flex justify-between mt-[15px] text-[14px] sm:text-[16px] font-light">
         <p className=" text-primary-light-grey">{itemName}</p>
-        <p className="text-primary-red font-bold">#{price.toLocaleString("en-US")}</p>
+        <p className="text-primary-red font-bold">
+          #{price.toLocaleString("en-US")}
+        </p>
       </div>
       <div className="flex justify-between mt-[15px]">
         <button

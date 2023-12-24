@@ -22,6 +22,13 @@ export default function HomeContextProvider(props) {
   const [addressClick , setAddressClick] = useState(false);
   const [visibility, setVisibility] = useState(false);
 
+  const [currentUser, setCurrentUser] = React.useState({
+    username: "",
+    phonenumber: "",
+    email: "",
+    _id: ""
+})
+
   const getTotalCartAmount = () => {
     let totalAmount = 0;
     for (const item in cartItems) {
@@ -102,7 +109,9 @@ export default function HomeContextProvider(props) {
     isVisible,
     isNotVisible,
     location,
-    setLocation
+    setLocation,
+    currentUser,
+    setCurrentUser
   };
 
 

@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({error: "User does not exist"}, {status: 404});
         };
 
-        const validPassword = await bcryptjs.compare(password, user.password)
+        const validPassword = await bcryptjs.compare(password, user.password);
 
         if(!validPassword) {
             return NextResponse.json({error: "Invalid Password"}, {status : 400})
@@ -26,19 +26,20 @@ export async function POST(request: NextRequest) {
         const tokenData = {
             id: user._id, 
             username: user.username,
-            phonenumber: user.phonenumber
-        }
-        console.log(tokenData)
+            phonenumber: user.phonenumber,
+            email: user.email
+        };
+        console.log(tokenData);
 
         const token =  jwt.sign(tokenData, process.env.TOKEN_SECRET!, { expiresIn: "2 days" });
-        console.log(token)
+        console.log(token);
 
         const response = NextResponse.json({
             message: "Login succesfull",
-        })
+        });
         response.cookies.set("token", token, {
             httpOnly: true,
-        })
+        });
 
         return response
 

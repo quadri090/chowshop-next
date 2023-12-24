@@ -4,7 +4,6 @@ import React, { useContext, useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import InputArea from "@/components/InputArea";
 import LoginModal from "@/components/LoginModal.jsx";
 import { FaExclamationCircle } from "react-icons/fa";
 // import HomeContext from "@/context/HomeContext.jsx";
@@ -50,7 +49,7 @@ export default function LogIn() {
           setLoading(true);
           const res = await axios.post("/api/users/login", user);
           console.log("Login Successful", res.data);
-          // router.push("/home");
+          router.push("/profile");
         } catch (error) {
           setError(true);
           console.log(error.message);
@@ -135,7 +134,7 @@ export default function LogIn() {
           
           {error && (
             <div className="mt-[10px] flex items-center gap-2 font-medium text-red-500">
-              <p className="text-sm">Email or password incorrect</p>
+              <p className="text-sm">Phone Number or password incorrect</p>
               <FaExclamationCircle />
             </div>
           )}
