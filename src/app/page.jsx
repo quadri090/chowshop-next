@@ -7,20 +7,41 @@ import HomeMenu from '../components/HomeMenu.jsx'
 import Layout from "../components/layout.jsx"
 
 export default function Home() {
-  const { currentUser, setCurrentUser } = useContext(HomeContext);
+  const { currentUser, setCurrentUser, location, setLocation } = useContext(HomeContext);
+  const [data, setData] = React.useState({
+    userLocation: "",
+    userId: ""
+  })
 
   React.useEffect(() => {
     const onPageLoad = async () => {
       try {
         const res = await axios.get("api/users/newuser")
         setCurrentUser(res.data.data);
-        console.log(`Home Page Data\n${currentUser}`)
+        setData({...data, userId: res.data.data._id})
+        // setLocation(res.data.data.location)
+        console.log(`Home Page Data\n${res.data.data}`)
       } catch (error) {
         console.log(error)
       }
     }
     onPageLoad()
   },[])
+
+  // React.useEffect(() => {
+  //   if (data.userId !== "") {
+  //     const setUserLocation = async () => {
+  //       try {
+  //         await axios.post("api/users/setuserlocation", data)
+  //         setData({...data, userLocation: location})
+  //         console.log(data)
+  //       } catch (error) {
+  //         console.log(error)
+  //       }
+  //     }
+  //     setUserLocation()
+  //   }
+  // },[location])
 
   return (
     <>
