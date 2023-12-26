@@ -1,15 +1,28 @@
-import { NextURL } from "next/dist/server/web/next-url"
 import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
     const path = request.nextUrl.pathname
 
-    const isNotPublicPath = path === "/ordersuccessful" || "/orderfailed" || "/verification" 
+    const isLoggedInUserPath = path === "/ordersuccessful" || path === "/orderfailed" || path === "/verification" 
 
-    const token = request.cookies.get("token")?.value || ""
+    const token = request.cookies.get("token")?.value || undefined
 
-    // if(!token && isNotPublicPath) {
-    //     return NextResponse.redirect(new URL('/login', request.nextUrl))
-    // }
+    if(token && path === "/login" || path === "/signup") {
+        return NextResponse.redirect(new URL('/', request.nextUrl))
+    }
+
+    if(!token && isLoggedInUserPath) {
+        return NextResponse.redirect(new URL('/login', request.nextUrl))
+    }
 }
+
+export const config = {
+    matcher: [
+      '/ordersuccessful',
+      '/orderfailed',
+      '/verification',
+      '/login',
+      '/signup'
+    ]
+  }
