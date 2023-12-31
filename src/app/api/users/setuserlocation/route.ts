@@ -16,26 +16,28 @@ try {
         return NextResponse.json({error: "Invalid token"}, {status: 400})
     }
 
-    // user.location = userLocation
-    // await user.save()
-
-    const newTokenData = {
+    const locationToken = {
         id: user._id, 
-        username: user.username,
-        phonenumber: user.phonenumber,
-        email: user.email,
         location: userLocation
     };
 
-    console.log(newTokenData);
-
-    const encodedToken = request.cookies.get("token")?.value || "";
-    const decodedToken: any = jwt.verify(encodedToken, process.env.TOKEN_SECRET!);
-
-    const token =  jwt.sign(newTokenData, process.env.TOKEN_SECRET!, { expiresIn: "2 days" });
+    console.log(locationToken);
     
 
-    return NextResponse.json({message: "User location set", success: true})
+    const token =  jwt.sign(locationToken, process.env.TOKEN_SECRET!, { expiresIn: "10 days" });
+
+    console.log(token)
+    
+
+    const response = NextResponse.json({message: "User location set", success: true})
+
+    response.cookies.set("locationToken", token, {
+        httpOnly: true,
+    });
+
+    return response
+
+    
 
 
 
@@ -43,3 +45,5 @@ try {
     return NextResponse.json({error: error.message}, {status: 400})
     }
 }
+
+//i am getting the token from the frontend and signing it with jwt, but somehow, a second jwt token isnt coming up in the browser as i want it to

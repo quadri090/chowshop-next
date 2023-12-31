@@ -28,20 +28,23 @@ export default function Home() {
     onPageLoad()
   },[])
 
-  // React.useEffect(() => {
-  //   if (data.userId !== "") {
-  //     const setUserLocation = async () => {
-  //       try {
-  //         await axios.post("api/users/setuserlocation", data)
-  //         setData({...data, userLocation: location})
-  //         console.log(data)
-  //       } catch (error) {
-  //         console.log(error)
-  //       }
-  //     }
-  //     setUserLocation()
-  //   }
-  // },[location])
+  React.useEffect(() => {
+    setData({...data, userLocation: location})
+  },[location])
+
+  React.useEffect(() => {
+    if (data.userId !== "" && data.userLocation !== "") {
+      const setLocationToken = async () => {
+        try {
+          await axios.post("api/users/setuserlocation", data)
+          console.log(data)
+        } catch (error) {
+          console.log(error)
+        }
+      }
+      setLocationToken()
+    }
+  },[location])
 
   return (
     <>

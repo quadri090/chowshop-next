@@ -10,7 +10,7 @@ import { FaExclamationCircle } from "react-icons/fa";
 
 export default function LogIn() {
   const inputClasses =
-    "text-[14px] sm:text-base lg:text-[20px] font-medium h-[50px] p-[10px] border-[1px] mt-[8px] w-full sm:h-[60px] shadow-xl outline-primary-red rounded-[5px]";
+    "text-[14px] sm:text-base lg:text-[20px] font-medium h-[50px] p-[10px] border-[1px] mt-[0px] w-full sm:h-[60px] shadow-xl outline-primary-red rounded-[5px]";
   const router = useRouter();
   // const {
   //   isNotVisible,
@@ -82,7 +82,7 @@ export default function LogIn() {
         </div>
 
         <div>
-          <div
+          {/* <div
             className="w-full md:w-[500px] lg:w-full h-[50px] sm:h-[60px] mt-[40px] flex items-center justify-center gap-[15px] rounded-[5px] sm:mx-auto bg-black text-white text-[14px] "
             onClick={() => {
               alert("shipping soon for devs");
@@ -96,12 +96,14 @@ export default function LogIn() {
             <div className="flex-grow border-b-[2px] h-[2px]"></div>
             <p className="w-[50px]">Or</p>
             <div className="flex-grow border-b-[2px] h-[2px]"></div>
-          </div>
+          </div> */}
 
-          <div className="mt-[20px]">
+          <div className="mt-[30px]">
+            <label htmlFor="phonenumber" className="text-sm font-medium">Phone Number</label>
             <input
+              id='phonenumber'
               type="tel"
-              placeholder="Phone Number"
+              placeholder="+234"
               className={inputClasses}
               value={user.phonenumber}
               onChange={(e) =>
@@ -110,10 +112,11 @@ export default function LogIn() {
             />
           </div>
 
-          <div className="mt-[20px]">
+          <div className="mt-[30px]">
+            <label htmlFor="phonenumber" className="text-sm font-medium">Password</label>
             <input
               type="password"
-              placeholder="Passsword"
+              placeholder="*******"
               className={inputClasses}
               value={user.password}
               onChange={(e) => setUser({ ...user, password: e.target.value })}

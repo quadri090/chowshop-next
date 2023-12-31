@@ -6,9 +6,11 @@ export async function middleware(request: NextRequest) {
 
     const isLoggedInUserPath = path === "/ordersuccessful" || path === "/orderfailed" || path === "/verification" 
 
+    const isPublicOnlyPath = path === "/login" || path === "/signup"
+
     const token = request.cookies.get("token")?.value || undefined
 
-    if(token && path === "/login" || path === "/signup") {
+    if(token && isPublicOnlyPath ) {
         return NextResponse.redirect(new URL('/', request.nextUrl))
     }
 

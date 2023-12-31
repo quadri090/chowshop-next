@@ -27,7 +27,8 @@ export async function POST(request: NextRequest) {
             id: user._id, 
             username: user.username,
             phonenumber: user.phonenumber,
-            email: user.email
+            email: user.email,
+            location: ""
         };
         console.log(tokenData);
 

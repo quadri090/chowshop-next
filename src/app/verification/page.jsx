@@ -25,11 +25,13 @@ export default function Verification() {
     addressInputOpen,
     addressInputClose,
     location,
-    addressClick, } = useContext(HomeContext);
-
-  // const navigate = useNavigate();
+    addressClick,
+    currentUser } = useContext(HomeContext);
+  
+  const [alternateNum, setAlternateNum] = useState(false)
+  
   const payableAmount = getTotalCartAmount();
-  const KEY = "FLWPUBK_TEST-d0838725990649edd81198e11c5b468f-X";
+  const KEY = process.env.FLUTTER_KEY;
 
   const config = {
     public_key: KEY,
@@ -139,13 +141,35 @@ export default function Verification() {
 
         <InputArea
           myProps="mt-[30px] lg:mt-[30px] w-full shadow-xl"
-          head="Phone Number"
+          vvalue={`0${currentUser.phonenumber}`}
+          head="Profile Number"
           type="tel"
           mnlength="10"
           mxlength="11"
           placeholder="+234"
           inputprops="w-full"
         />
+        {!alternateNum && (
+          <div className="text-xs font-medium text-primary-green mt-4 flex items-center justify-center">
+            <button 
+              className="flex items-center justify-center"
+              onClick={() => setAlternateNum(true)}
+              ><span className="text-[24px] mr-1">+</span> Add Another Number
+              </button>
+          </div>
+        )}
+
+        {alternateNum && (
+           <InputArea
+           myProps="mt-[30px] lg:mt-[30px] w-full shadow-xl"
+           head="Alternate Number"
+           type="tel"
+           mnlength="10"
+           mxlength="11"
+           placeholder="+234"
+           inputprops="w-full"
+         />
+        )}
 
         <div className="border-b-[1px] mt-[30px]"></div>
 
@@ -163,7 +187,7 @@ export default function Verification() {
               },
             });
           }}
-          className="w-full sm:w-[500px] lg:w-[809px] h-[50px] sm:h-[60px] flex items-center justify-center  rounded-[5px] sm:mx-auto mt-[49px] mb-[33px] lg:mt-[60px] text-base font-semibold text-white bg-primary-red"
+          className="w-full sm:w-[500px] lg:w-[809px] h-[50px] sm:h-[60px] flex items-center justify-center  rounded-[5px] sm:mx-auto mt-[29px] mb-[33px] lg:mt-[60px] text-base font-semibold text-white bg-primary-red"
         >
           Proceed to Payment
         </button>
