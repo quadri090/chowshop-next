@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import React from 'react'
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
 
- const Vendor = (props) => {
-    return (
-      <div className='flex items-center mt-[40px] w-auto gap-[10px] text-[15px] font-medium'>
-        <Image src={props.imgSrc} alt="" className={`${props.imgProps}`} />
-        <p className='font-bold'>{props.text}</p>
-      </div> 
-    )
-  }
+const Vendor = (props) => {
+  return (
+    <div className="mt-[40px] flex w-auto items-center gap-[10px] text-[15px] font-medium">
+      <Image src={props.imgSrc} alt="" className={`${props.imgProps}`} />
+      <p className="font-bold">{props.text}</p>
+    </div>
+  );
+};
 
-  export default Vendor
+export default Vendor;

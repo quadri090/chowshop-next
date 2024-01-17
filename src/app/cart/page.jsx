@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
 import React, { useContext } from "react";
-import NavBar from '@/components/NavBar'
+import NavBar from "@/components/NavBar";
 import { ITEMS } from "@/items.js";
 import { HomeContext } from "@/context/HomeContext.jsx";
 import CartItem from "@/components/CartItem.jsx";
@@ -9,12 +9,8 @@ import ShopNav from "@/components/ShopNav.jsx";
 import Btn from "@/components/Btn.jsx";
 
 export default function Cart() {
-  const {
-    cartItems,
-    getTotalCartAmount,
-    clearCart,
-    getTotalItemsCount,
-  } = useContext(HomeContext);
+  const { cartItems, getTotalCartAmount, clearCart, getTotalItemsCount } =
+    useContext(HomeContext);
   const totalAmount = getTotalCartAmount();
   const totalItemCount = getTotalItemsCount();
   const ID = ITEMS.map((item) => {
@@ -52,23 +48,23 @@ export default function Cart() {
   return (
     <>
       <NavBar />
-      <div className="mt-[80px] sm:mt-[100px] mx-[20px] sm:mx-[30px] lg:mx-[100px] font-Poppins">
+      <div className="mx-[20px] mt-[80px] font-Poppins sm:mx-[30px] sm:mt-[100px] lg:mx-[200px]">
         <ShopNav
           width="w-[88px]"
           displayVerification="hidden"
           displayVendors="hidden"
         />
-        <div className="flex items-center justify-between mt-5">
+        <div className="mt-5 flex items-center justify-between">
           <div className="">
-            <p className="text-[20px] sm:text-[30px] font-medium">Cart</p>
-            <p className="text-[16px] text-primary-red font-normal lg:hidden">
+            <p className="text-[20px] font-medium sm:text-[30px]">Cart</p>
+            <p className="text-[16px] font-normal text-primary-red lg:hidden">
               {totalItemCount} Items
             </p>
           </div>
           <div className=" flex items-center justify-center gap-1">
             {/* <i className='fa fa-trash  text-red-600'></i> */}
             <button
-              className="text-[12px] sm:text-base text-red-600 font-semibold "
+              className="text-[12px] font-semibold text-red-600 sm:text-base "
               onClick={clearCart}
             >
               {emptyCart()}
@@ -78,11 +74,11 @@ export default function Cart() {
         <div className="mt-[42px]">
           {ITEMS.map((item) => {
             if (cartItems[item.id] !== 0) {
-              return <CartItem data={item} key={item.id}/>;
+              return <CartItem data={item} key={item.id} />;
             }
           })}
         </div>
-        <div className="flex justify-between mt-[20px] sm:text-[18px]">
+        <div className="mt-[20px] flex justify-between sm:text-[18px]">
           <p>Subtotal</p>
           {totalAmount > 0 ? (
             <p> #{totalAmount.toLocaleString("en-US")} </p>
@@ -90,7 +86,7 @@ export default function Cart() {
             <p>#0</p>
           )}
         </div>
-        <div className="flex justify-between items-center"></div>
+        <div className="flex items-center justify-between"></div>
         <Btn
           routte={checkOut()}
           text={checkOutText()}

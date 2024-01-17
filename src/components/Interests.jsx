@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import Link from "next/link";
@@ -11,14 +11,18 @@ export default function Interests(props) {
 
   return (
     <Link href={`${props.routte}`}>
-      <div className="w-auto h-[141px] lg:h-[169px] flex items-center text-primary-very-light-grey border rounded-[10px] shadow-myBoxShadow relative">
-        <div className="px-[20px] flex flex-col items-cente justify-center">
-          {location != '' && 
-            <p className={`${props.display} rounded-md text-[10px] text-white font-semibold py-[3px] px-[5px] right-2 top-2`}>Coming Soon!</p>
-          } 
-          <Image src={props.src} alt="icon" className="w-[30px] h-[30px]" />
+      <div className="relative flex h-[141px] w-auto items-center rounded-[10px] border text-primary-very-light-grey shadow-myBoxShadow lg:h-[169px]">
+        <div className="items-cente flex flex-col justify-center px-[20px]">
+          {location != "" && (
+            <p
+              className={`${props.display} right-2 top-2 rounded-md px-[5px] py-[3px] text-[10px] font-semibold text-white`}
+            >
+              Coming Soon!
+            </p>
+          )}
+          <Image src={props.src} alt="icon" className="h-[30px] w-[30px]" />
           <p
-            className={`text-[16px] lg:text-[18px] mt-[11px] font-medium ${
+            className={`mt-[11px] text-[16px] font-medium lg:text-[18px] ${
               location !== ""
                 ? "text-primary-red"
                 : "text-primary-very-light-grey"
@@ -27,7 +31,7 @@ export default function Interests(props) {
             {props.head}
           </p>
           <p
-            className={`text-[14px] mt-[7px] font-normal ${
+            className={`mt-[7px] text-[14px] font-normal ${
               location !== ""
                 ? "text-primary-grey"
                 : "text-primary-very-light-grey"

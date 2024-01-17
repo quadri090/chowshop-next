@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import { useRef, useState } from "react";
@@ -55,7 +55,7 @@ export default function HomeServe() {
         </Swiper>
       </div>
 
-      <div className="hidden w-full md:flex justify-between">
+      <div className="hidden w-full justify-between md:flex">
         <ServeSteps
           imgSrc={map1}
           head="Tell us where you are"
@@ -73,9 +73,8 @@ export default function HomeServe() {
           head="We'll come running"
           desc="Your order will be delivered to you in no time."
         />
-
       </div>
-      <div className="mt-[30px] border-b-4 border-white w-full"></div>
+      <div className="mt-[30px] w-full border-b-4 border-white"></div>
     </div>
   );
 }

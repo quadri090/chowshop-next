@@ -36,9 +36,9 @@ export default function LogIn() {
     } else {
       setButtonDisabled(true);
       setEmptyField(false);
-    } 
+    }
     if (error === true) {
-      setEmptyField(false)
+      setEmptyField(false);
     }
   }, [user, error]);
 
@@ -66,7 +66,7 @@ export default function LogIn() {
 
   return (
     <LoginModal>
-      <div className="sm:w-[400px] sm:flex flex-col justify-center  my-[40px] mx-[20px] sm:mx-auto font-Poppins">
+      <div className="mx-[20px] my-[40px] flex-col justify-center  font-Poppins sm:mx-auto sm:flex sm:w-[400px]">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-[20px] font-medium">Sign In</p>
@@ -74,9 +74,9 @@ export default function LogIn() {
               Sign in to continue
             </p>
           </div>
-          <div className="w-[25px] sm:w-[40px] h-[25px] sm:h-[40px] flex items-center justify-center border shadow-myBoxShadow bg-[#fff] rounded-full text-primary-red">
+          <div className="flex h-[25px] w-[25px] items-center justify-center rounded-full border bg-[#fff] text-primary-red shadow-myBoxShadow sm:h-[40px] sm:w-[40px]">
             <Link href="/">
-              <i className="fa fa-times text-[16px] md:text-[24px] font-extralight"></i>
+              <i className="fa fa-times text-[16px] font-extralight md:text-[24px]"></i>
             </Link>
           </div>
         </div>
@@ -99,9 +99,11 @@ export default function LogIn() {
           </div> */}
 
           <div className="mt-[30px]">
-            <label htmlFor="phonenumber" className="text-sm font-medium">Phone Number</label>
+            <label htmlFor="phonenumber" className="text-sm font-medium">
+              Phone Number
+            </label>
             <input
-              id='phonenumber'
+              id="phonenumber"
               type="tel"
               placeholder="+234"
               className={inputClasses}
@@ -113,7 +115,9 @@ export default function LogIn() {
           </div>
 
           <div className="mt-[30px]">
-            <label htmlFor="phonenumber" className="text-sm font-medium">Password</label>
+            <label htmlFor="phonenumber" className="text-sm font-medium">
+              Password
+            </label>
             <input
               type="password"
               placeholder="*******"
@@ -134,7 +138,6 @@ export default function LogIn() {
             </button>
           </div>
 
-          
           {error && (
             <div className="mt-[10px] flex items-center gap-2 font-medium text-red-500">
               <p className="text-sm">Phone Number or password incorrect</p>
@@ -149,10 +152,9 @@ export default function LogIn() {
             </div>
           )}
 
-
           <div className={`${error || emptyField ? "mt-0" : "mt-[20px]"}`}>
             <button
-              className="text-base font-semibold text-white w-full sm:w-full lg:w-full h-[50px] sm:h-[60px] flex items-center justify-center  rounded-[6px] sm:mx-auto bg-primary-red hover:bg-yellow-500`"
+              className="hover:bg-yellow-500` flex h-[50px] w-full items-center justify-center rounded-[6px] bg-primary-red text-base font-semibold text-white  sm:mx-auto sm:h-[60px] sm:w-full lg:w-full"
               onClick={() => checkButtonState()}
             >
               Login
@@ -162,7 +164,7 @@ export default function LogIn() {
           <div className="mt-[20px]">
             <p className="text-[14px]">
               Don&apos;t have an account?{" "}
-              <Link href="/signup" className="text-primary-red font-semibold">
+              <Link href="/signup" className="font-semibold text-primary-red">
                 Sign Up
               </Link>
             </p>

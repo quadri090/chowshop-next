@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 import React from "react";
 import { useState, useContext } from "react";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
-import NavBar from '@/components/NavBar'
+import NavBar from "@/components/NavBar";
 import { HomeContext } from "@/context/HomeContext.jsx";
 import ShopNav from "@/components/ShopNav";
 import InputArea from "@/components/InputArea";
@@ -11,30 +11,26 @@ import Locations from "@/components/Locations.jsx";
 import { STREETS } from "@/streets.js";
 import { useRouter } from "next/navigation";
 
-
 export default function Verification() {
-  const router= useRouter()
+  const router = useRouter();
 
-  const [
-    RegisteredAddress,
-    setRegisteredAddress
-  ] = useState(true);
+  const [RegisteredAddress, setRegisteredAddress] = useState(true);
 
-  const { 
+  const {
     getTotalCartAmount,
     addressInputOpen,
     addressInputClose,
     location,
     addressClick,
-    currentUser } = useContext(HomeContext);
-  
-  const [alternateNum, setAlternateNum] = useState(false)
-  
+    currentUser,
+  } = useContext(HomeContext);
+
+  const [alternateNum, setAlternateNum] = useState(false);
+
   const payableAmount = getTotalCartAmount();
-  const KEY = process.env.FLUTTER_KEY;
 
   const config = {
-    public_key: KEY,
+    public_key: "FLWPUBK_TEST-d0838725990649edd81198e11c5b468f-X",
     tx_ref: Date.now(),
     amount: payableAmount,
     currency: "NGN",
@@ -57,38 +53,40 @@ export default function Verification() {
   return (
     <>
       <NavBar />
-      <div className="mx-[20px] lg:mx-[100px] mt-[80px] font-Poppins">
+      <div className="mx-[20px] mt-[80px] font-Poppins lg:mx-[200px]">
         <ShopNav
           width="w-[178px]"
           textDisplay="text-primary-very-light-grey"
           displayVendors="hidden"
         />
         <div className="mt-[20px]">
-          <p className="text-[20px] lg:text-[30px] font-medium">Verification</p>
-          <p className="text-[14px] lg:text-base font-normal text-primary-red">
+          <p className="text-[20px] font-medium lg:text-[30px]">Verification</p>
+          <p className="text-[14px] font-normal text-primary-red lg:text-base">
             Confirm address & Phone Number
           </p>
         </div>
 
-        <div className={`${RegisteredAddress ? 'block' : 'hidden'} mt-[42px] flex justify-between items-center`}>
+        <div
+          className={`${RegisteredAddress ? "block" : "hidden"} mt-[42px] flex items-center justify-between`}
+        >
           <div className="">
-            <p className="text-sm sm:text-base lg:text-[20px] font-medium">
+            <p className="text-sm font-medium sm:text-base lg:text-[20px]">
               Delivery Address
             </p>
-            <p className="text-[10px] sm:text-sm lg:text-[16px] font-normal text-primary-grey mt-[5px]">
-              Deliver to <span className="font-semibold text-[12px]">{location}</span> 
+            <p className="mt-[5px] text-[10px] font-normal text-primary-grey sm:text-sm lg:text-[16px]">
+              Deliver to{" "}
+              <span className="text-[12px] font-semibold">{location}</span>
             </p>
           </div>
           <div
-            className="flex items-center justify-center w-[20px] h-[20px] outline outline-[2px] outline-primary-red rounded-[12px]"
+            className="flex h-[20px] w-[20px] items-center justify-center rounded-[12px] outline outline-[2px] outline-primary-red"
             onClick={() => setRegisteredAddress(!RegisteredAddress)}
           >
             <button
-              className={`w-[14px] h-[14px] p-[3px] bg-primary-red rounded-[8px] ${
+              className={`h-[14px] w-[14px] rounded-[8px] bg-primary-red p-[3px] ${
                 RegisteredAddress ? "block" : "hidden"
               } `}
             ></button>
-
           </div>
         </div>
 
@@ -97,12 +95,12 @@ export default function Verification() {
             className="mt-[20px] lg:mt-[80px]"
             onMouseLeave={addressInputClose}
           >
-            <p className="text-[12px] sm:text-[16px] lg:text-[20px] font-medium text-black ">
+            <p className="text-[12px] font-medium text-black sm:text-[16px] lg:text-[20px] ">
               Where are you?
             </p>
-            <div className="flex justify-between items-center w-full border-[1px] mt-[10px] shadow-xl rounded-[5px] bg-white">
+            <div className="mt-[10px] flex w-full items-center justify-between rounded-[5px] border-[1px] bg-white shadow-xl">
               <input
-                className="text-[13px] font-normal w-full h-[50px] lg:h-[60px] mx-[10px] p-[5px] sm:text-base lg:text-[20px] outline-none"
+                className="mx-[10px] h-[50px] w-full p-[5px] text-[13px] font-normal outline-none sm:text-base lg:h-[60px] lg:text-[20px]"
                 placeholder="Select your delivery address"
                 value={location}
                 onChange={(e) => e.currentTarget.value}
@@ -111,18 +109,18 @@ export default function Verification() {
               <i
                 className={`${
                   addressClick ? "hidden" : "block"
-                } fa fa-chevron-down text-primary-red px-[8px] lg:px-[20px] w-auto`}
+                } fa fa-chevron-down w-auto px-[8px] text-primary-red lg:px-[20px]`}
               ></i>
               <i
                 className={`${
                   addressClick ? "block" : "hidden"
-                } fa fa-chevron-up text-primary-red px-[8px] lg:px-[20px] w-auto`}
+                } fa fa-chevron-up w-auto px-[8px] text-primary-red lg:px-[20px]`}
               ></i>
             </div>
             <div
               className={`${
                 addressClick ? "block" : "hidden"
-              } flex flex-col gap-[12px] lg:gap-[16px] mt-[10px] py-[15px] w-full text-left sm:w-[300px] border rounded-lg shadow-2xl`}
+              } mt-[10px] flex w-full flex-col gap-[12px] rounded-lg border py-[15px] text-left shadow-2xl sm:w-[300px] lg:gap-[16px]`}
             >
               {STREETS.map((street) => {
                 return <Locations data={street} key={street.id} />;
@@ -150,28 +148,29 @@ export default function Verification() {
           inputprops="w-full"
         />
         {!alternateNum && (
-          <div className="text-xs font-medium text-primary-green mt-4 flex items-center justify-center">
-            <button 
+          <div className="mt-4 flex items-center justify-center text-xs font-medium text-primary-green">
+            <button
               className="flex items-center justify-center"
               onClick={() => setAlternateNum(true)}
-              ><span className="text-[24px] mr-1">+</span> Add Another Number
-              </button>
+            >
+              <span className="mr-1 text-[24px]">+</span> Add Another Number
+            </button>
           </div>
         )}
 
         {alternateNum && (
-           <InputArea
-           myProps="mt-[30px] lg:mt-[30px] w-full shadow-xl"
-           head="Alternate Number"
-           type="tel"
-           mnlength="10"
-           mxlength="11"
-           placeholder="+234"
-           inputprops="w-full"
-         />
+          <InputArea
+            myProps="mt-[30px] lg:mt-[30px] w-full shadow-xl"
+            head="Alternate Number"
+            type="tel"
+            mnlength="10"
+            mxlength="11"
+            placeholder="+234"
+            inputprops="w-full"
+          />
         )}
 
-        <div className="border-b-[1px] mt-[30px]"></div>
+        <div className="mt-[30px] border-b-[1px]"></div>
 
         <button
           onClick={() => {
@@ -187,7 +186,7 @@ export default function Verification() {
               },
             });
           }}
-          className="w-full sm:w-[500px] lg:w-[809px] h-[50px] sm:h-[60px] flex items-center justify-center  rounded-[5px] sm:mx-auto mt-[29px] mb-[33px] lg:mt-[60px] text-base font-semibold text-white bg-primary-red"
+          className="mb-[33px] mt-[29px] flex h-[50px] w-full items-center justify-center rounded-[5px]  bg-primary-red text-base font-semibold text-white sm:mx-auto sm:h-[60px] sm:w-[500px] lg:mt-[60px] lg:w-[809px]"
         >
           Proceed to Payment
         </button>
