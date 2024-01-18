@@ -57,11 +57,12 @@ export default function HomeMenu() {
           className={`mt-[10px] flex w-full items-center justify-between rounded-[10px] border shadow-xl ${location == "" ? "bg-white" : "bg-inherit"}`}
         >
           <input
-            className={`mx-[10px] h-[50px] w-full p-[5px] text-[13px] font-normal outline-none sm:text-base lg:h-[60px] lg:text-[20px]  ${location == "" ? "bg-white" : "bg-inherit"}`}
+            className={`mx-[10px] h-[50px] w-full p-[5px] text-[13px] font-normal outline-none sm:text-base lg:h-[60px] lg:text-[20px] outline-dashed  ${location == "" ? "bg-white" : "bg-inherit"}`}
             placeholder="Select your delivery address"
             value={location}
             onChange={(e) => e.currentTarget.value}
             onClick={() => addressInputOpen()}
+            readOnly
           />
 
           <i
@@ -78,7 +79,7 @@ export default function HomeMenu() {
         <div
           className={`${
             addressClick ? "block" : "hidden"
-          } mt-[10px] flex w-full flex-col gap-[12px] rounded-lg border py-[15px] text-left shadow-2xl sm:w-[300px] lg:gap-[16px]`}
+          } mt-[10px] grid w-full grid-cols-4 gap-y-6 h-40 rounded-lg border py-6 text-left shadow-2xl sm:w-[300px] lg:gap-[16px] overflow-y-scroll`}
         >
           {STREETS.map((street) => {
             return <Locations data={street} key={street.id} />;

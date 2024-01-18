@@ -23,11 +23,20 @@ export default function Verification() {
     location,
     addressClick,
     currentUser,
+    alternateNum,
+    setAlternateNum,
+    showAlternateNum,
+    setShowAlernateNum,
   } = useContext(HomeContext);
 
-  const [alternateNum, setAlternateNum] = useState(false);
-
   const payableAmount = getTotalCartAmount();
+
+  // const [alternateNum, setAlternateNum] = useState({
+  //   num: ""
+  // });
+
+  // const [showAlternateNum, setShowAlernateNum] = useState(false)
+
 
   const config = {
     public_key: "FLWPUBK_TEST-d0838725990649edd81198e11c5b468f-X",
@@ -137,37 +146,44 @@ export default function Verification() {
           inputprops="w-full"
         />
 
-        <InputArea
-          myProps="mt-[30px] lg:mt-[30px] w-full shadow-xl"
-          vvalue={`0${currentUser.phonenumber}`}
-          head="Profile Number"
-          type="tel"
-          mnlength="10"
-          mxlength="11"
-          placeholder="+234"
-          inputprops="w-full"
-        />
-        {!alternateNum && (
+        <div className="mt-[30px] lg:mt-[30px] text-[14px] font-medium sm:text-base lg:text-[20px]">
+          <label >Profile Number</label>
+          <input
+            className=" w-full shadow-xl rounded-[5px]  mt-[8px] h-[50px] border-[1px] p-[10px] outline-none lg:h-[60px]"
+            value={`0${currentUser.phonenumber}`}
+            type="tel"
+            mnlength="10"
+            mxlength="11"
+            placeholder="+234"
+            readOnly
+          />
+        </div>
+        {!showAlternateNum && (
           <div className="mt-4 flex items-center justify-center text-xs font-medium text-primary-green">
             <button
               className="flex items-center justify-center"
-              onClick={() => setAlternateNum(true)}
+              onClick={() => setShowAlernateNum(true)}
             >
               <span className="mr-1 text-[24px]">+</span> Add Another Number
             </button>
           </div>
         )}
 
-        {alternateNum && (
-          <InputArea
-            myProps="mt-[30px] lg:mt-[30px] w-full shadow-xl"
-            head="Alternate Number"
-            type="tel"
-            mnlength="10"
-            mxlength="11"
-            placeholder="+234"
-            inputprops="w-full"
-          />
+        {showAlternateNum && (
+           <div className="mt-[30px] lg:mt-[30px] text-[14px] font-medium sm:text-base lg:text-[20px]">
+            <label >Alternate Number</label>
+
+             <input
+              className=" w-full shadow-xl rounded-[5px]  mt-[8px] h-[50px] border-[1px] p-[10px] outline-none lg:h-[60px]"
+               head="Alternate Number"
+               type="tel"
+               mnlength="10"
+               mxlength="11"
+               placeholder="+234"
+               value={alternateNum.num}
+               onChange={(e) => setAlternateNum({ ...alternateNum, num: e.target.value })}
+             />
+           </div>
         )}
 
         <div className="mt-[30px] border-b-[1px]"></div>

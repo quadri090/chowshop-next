@@ -21,6 +21,11 @@ export default function HomeContextProvider(props) {
   const [location, setLocation] = useState("");
   const [addressClick , setAddressClick] = useState(false);
   const [visibility, setVisibility] = useState(false);
+  const [alternateNum, setAlternateNum] = useState({
+    num: ""
+  });
+
+  const [showAlternateNum, setShowAlernateNum] = useState(false)
 
   const [currentUser, setCurrentUser] = React.useState({
     username: "",
@@ -111,7 +116,11 @@ export default function HomeContextProvider(props) {
     location,
     setLocation,
     currentUser,
-    setCurrentUser
+    setCurrentUser,
+    alternateNum,
+    setAlternateNum,
+    showAlternateNum,
+    setShowAlernateNum
   };
 
 
