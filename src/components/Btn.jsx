@@ -9,7 +9,7 @@ export default function Btn(props) {
       <div
         className={` ${props.myClasses} flex h-[50px] w-full items-center justify-center rounded-[6px] bg-primary-red hover:bg-yellow-500  sm:mx-auto sm:h-[60px] sm:w-full lg:w-full`}
       >
-        <button className="text-base font-semibold text-white">
+        <button className="text-base font-semibold text-white md:text-xl md:font-bold">
           {props.text}
         </button>
       </div>

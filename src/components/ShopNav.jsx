@@ -5,9 +5,8 @@ import Link from "next/link";
 
 export default function ShopNav(props) {
   return (
-    <div>
       <div
-        className={`${props.width} flex h-[21px] items-center justify-center gap-[3px] text-[14px] font-normal`}
+        className={`${props.width} flex h-[21px] items-center justify-center gap-[3px] text-[14px] md:text-[18px] font-normal`}
       >
         <Link href="/">
           <p className="text-primary-very-light-grey">Home</p>
@@ -30,6 +29,5 @@ export default function ShopNav(props) {
           <p className="">Vendors</p>
         </div>
       </div>
-    </div>
   );
 }

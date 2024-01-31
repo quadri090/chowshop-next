@@ -7,7 +7,7 @@ const Vendor = (props) => {
   return (
     <div className="mt-[40px] flex w-auto items-center gap-[10px] text-[15px] font-medium">
       <Image src={props.imgSrc} alt="" className={`${props.imgProps}`} />
-      <p className="font-bold">{props.text}</p>
+      <p className="font-bold md:text-[18px] md:font-medium">{props.text}</p>
     </div>
   );
 };

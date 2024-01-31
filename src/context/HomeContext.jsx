@@ -24,6 +24,9 @@ export default function HomeContextProvider(props) {
   const [alternateNum, setAlternateNum] = useState({
     num: ""
   });
+  const [additionalInfo, setAdditionalInfo] = useState({
+    info: ""
+  });
 
   const [showAlternateNum, setShowAlernateNum] = useState(false)
 
@@ -120,7 +123,9 @@ export default function HomeContextProvider(props) {
     alternateNum,
     setAlternateNum,
     showAlternateNum,
-    setShowAlernateNum
+    setShowAlernateNum,
+    additionalInfo,
+    setAdditionalInfo
   };
 
 

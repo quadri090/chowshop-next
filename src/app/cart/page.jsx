@@ -62,7 +62,6 @@ export default function Cart() {
             </p>
           </div>
           <div className=" flex items-center justify-center gap-1">
-            {/* <i className='fa fa-trash  text-red-600'></i> */}
             <button
               className="text-[12px] font-semibold text-red-600 sm:text-base "
               onClick={clearCart}
@@ -78,7 +77,7 @@ export default function Cart() {
             }
           })}
         </div>
-        <div className="mt-[20px] flex justify-between sm:text-[18px]">
+        <div className="mt-[20px] flex justify-between sm:text-[18px] text-primary-green font-bold">
           <p>Subtotal</p>
           {totalAmount > 0 ? (
             <p> #{totalAmount.toLocaleString("en-US")} </p>

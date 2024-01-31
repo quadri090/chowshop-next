@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { HomeContext } from "../context/HomeContext.jsx";
 import Interests from "./Interests.jsx";
 import HomeServe from "./HomeServe.jsx";
+import SetLocation from "./SetLocation.jsx"
 import Locations from "./Locations.jsx";
 import { STREETS } from "../streets.js";
 import ff from "../../public/assets/fast-food1.png";
@@ -53,65 +54,39 @@ export default function HomeMenu() {
             }}
           />
         </div>
-        <div
-          className={`mt-[10px] flex w-full items-center justify-between rounded-[10px] border shadow-xl ${location == "" ? "bg-white" : "bg-inherit"}`}
-        >
-          <input
-            className={`mx-[10px] h-[50px] w-full p-[5px] text-[13px] font-normal outline-none sm:text-base lg:h-[60px] lg:text-[20px] outline-dashed  ${location == "" ? "bg-white" : "bg-inherit"}`}
-            placeholder="Select your delivery address"
-            value={location}
-            onChange={(e) => e.currentTarget.value}
-            onClick={() => addressInputOpen()}
-            readOnly
-          />
+       <SetLocation/>
 
-          <i
-            className={`${
-              addressClick ? "hidden" : "block"
-            } fa fa-chevron-down w-auto px-[8px] text-primary-red lg:px-[20px]`}
-          ></i>
-          <i
-            className={`${
-              addressClick ? "block" : "hidden"
-            } fa fa-chevron-up w-auto px-[8px] text-primary-red lg:px-[20px]`}
-          ></i>
-        </div>
-        <div
-          className={`${
-            addressClick ? "block" : "hidden"
-          } mt-[10px] grid w-full grid-cols-4 gap-y-6 h-40 rounded-lg border py-6 text-left shadow-2xl sm:w-[300px] lg:gap-[16px] overflow-y-scroll`}
-        >
-          {STREETS.map((street) => {
-            return <Locations data={street} key={street.id} />;
-          })}
-        </div>
+
       </div>
 
       <div className="my-[30px] lg:my-[42px]">
         <p className="text-[12px] sm:text-[16px] lg:text-[20px]">
           Pick an interest
         </p>
-        <div className="mt-[10px] flex flex-col gap-[20px] sm:mt-[20px] sm:grid sm:grid-cols-2 sm:grid-rows-2 lg:flex lg:flex-row lg:justify-between">
+        <div className="mt-[10px] flex flex-col gap-[20px] sm:mt-[20px] sm:grid sm:grid-cols-2 sm:grid-rows-2 ">
           <Interests
-            routte={location !== "" ? "/vendors" : ""}
+            routte={location !== "" ? "/vendors" : "/"}
             src={location !== "" ? ffColored : ff}
             head="Fast food"
             desc="All sorrows are less with bread."
             display="hidden"
           />
           <Interests
+            routte="/"
             src={location !== "" ? hfColored : hf}
             head="Vegetables & Fruits"
             desc="May not want it, but good for you."
             display="absolute bg-primary-red "
           />
           <Interests
+            routte="/"
             src={location !== "" ? mtColored : drinks}
             head="Drinks & Cocktails"
             desc="I feel sad for those who don't drink."
             display="absolute bg-primary-red"
           />
           <Interests
+            routte="/"
             src={location !== "" ? fkColored : fork}
             head="Restaurants"
             desc="All sorrows are less with bread."

@@ -15,14 +15,14 @@ export default function Interests(props) {
         <div className="items-cente flex flex-col justify-center px-[20px]">
           {location != "" && (
             <p
-              className={`${props.display} right-2 top-2 rounded-md px-[5px] py-[3px] text-[10px] font-semibold text-white`}
+              className={`${props.display} right-2 top-2 rounded-md px-[5px] md:px-[10px] py-[3px] text-[10px] md:text-xs font-semibold text-white`}
             >
               Coming Soon!
             </p>
           )}
-          <Image src={props.src} alt="icon" className="h-[30px] w-[30px]" />
+          <Image src={props.src} alt="icon" className="h-[30px] w-[30px] md:h-[50px] md:w-[50px]" />
           <p
-            className={`mt-[11px] text-[16px] font-medium lg:text-[18px] ${
+            className={`mt-[11px] text-base font-medium md:text-[20px] ${
               location !== ""
                 ? "text-primary-red"
                 : "text-primary-very-light-grey"
@@ -31,7 +31,7 @@ export default function Interests(props) {
             {props.head}
           </p>
           <p
-            className={`mt-[7px] text-[14px] font-normal ${
+            className={`mt-[7px] text-[14px] md:text-[18px] font-normal ${
               location !== ""
                 ? "text-primary-grey"
                 : "text-primary-very-light-grey"

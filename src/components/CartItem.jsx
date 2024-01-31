@@ -29,7 +29,7 @@ export default function CartItems(props) {
             <Image
               src={itemImage}
               alt=""
-              className="h-[46px] w-[57px] sm:h-[75px] sm:w-[133px]"
+              className="h-[46px] w-[57px] sm:h-[75px] sm:w-[133px] rounded-lg md:rounded-2xl"
             />
           </div>
           <div className="flex flex-col justify-between">

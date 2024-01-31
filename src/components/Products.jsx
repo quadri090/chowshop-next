@@ -25,7 +25,7 @@ export default function Products(props) {
       </div>
       <div className="mt-[15px] flex justify-between text-[14px] font-light sm:text-[16px]">
         <p className=" text-primary-light-grey">{itemName}</p>
-        <p className="font-bold text-primary-red">
+        <p className="font-bold text-primary-green">
           #{price.toLocaleString("en-US")}
         </p>
       </div>
